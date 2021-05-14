@@ -5,14 +5,11 @@
 @section('content')
 
     @guest
-        <h1>hola solo eres invitado</h1>
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h3> Bienvenido </h3>
+                    <h3> Bienvenido invitado </h3>
                     <h1 class="display-4">Contenido de clientes</h1>
-
-
                     <p class="lead text-secondary">Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Neque quod rerum dolor, adipisci, ullam commodi tenetur labore minima, nihil qui distinctio fugit iure doloremque aspernatur laborum! Quibusdam itaque, neque incidunt?</p>
                 </div>
 
@@ -92,6 +89,5 @@
 
         @endif
     @endguest
-
 
 @endsection
