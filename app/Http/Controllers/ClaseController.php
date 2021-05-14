@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Clase;
+use App\Espacio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClaseController extends Controller
 {
@@ -25,7 +27,8 @@ class ClaseController extends Controller
      */
     public function create()
     {
-        //
+        $espacios = Espacio::get();
+        return view('clases.create', compact('espacios'));
     }
 
     /**
@@ -36,7 +39,25 @@ class ClaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'imagen' => 'required|image|max:2048'
+        ]);
+        $imagenes = $request->file('imagen')->store('public/imgSubidas');
+
+        $url = Storage::url($imagenes);
+        $nombre = request('nombre');
+        $desc = request('descripcion');
+        $aforo = request('aforo');
+        $espacio = request('espacio_id');
+         Clase::create([
+            'nombre' => $nombre,
+            'descripcion' => $desc,
+            'imagen' => $url,
+            'aforo' => $aforo,
+            'espacio_id' => $espacio
+        ]);
+
+        return back()->with('status', 'La nueva clase fue creada con exito');
     }
 
     /**
@@ -45,9 +66,10 @@ class ClaseController extends Controller
      * @param  \App\Clase  $clase
      * @return \Illuminate\Http\Response
      */
-    public function show(Clase $clase)
+    public function show(Clase $id)
     {
-        //
+        $clase = $id;
+        return view('clases.show', compact('clase'));
     }
 
     /**
@@ -56,9 +78,11 @@ class ClaseController extends Controller
      * @param  \App\Clase  $clase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clase $clase)
+    public function edit(Clase $id)
     {
-        //
+        $espacios = Espacio::get();
+        $clase = $id;
+        return view('clases.edit', compact('clase', 'espacios'));
     }
 
     /**
@@ -68,9 +92,20 @@ class ClaseController extends Controller
      * @param  \App\Clase  $clase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clase $clase)
+    public function update(Request $request, Clase $id)
     {
-        //
+        $request->validate([
+            'imagen' => 'image|max:2048'
+        ]);
+        if ($request->hasFile('imagen')) {
+            $imagen = $request->file('imagen')->store('public/imgSubidas');
+            $url = Storage::url($imagen);
+            $id->imagen = $url;
+        }
+
+        $id->update( $request->only('nombre', 'descripcion', 'aforo', 'espacio_id'));
+
+        return redirect()->route('clases.show', $id);
     }
 
     /**

@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clase extends Model
 {
-    //
+    protected $fillable = [
+        'nombre', 'descripcion', 'imagen', 'aforo', 'empieza', 'termina', 'espacio_id'
+    ];
 
 
 	public function espacio(){

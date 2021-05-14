@@ -59,5 +59,21 @@ Route::post('/role', 'RoleController@store')->name('roles.store');
 
 ///CLASES
 Route::get('/clase', 'ClaseController@index')->name('clases.index');
+Route::get('/clase/crear', 'ClaseController@create')->name('clases.create');
+Route::get('/clase/{id}/editar', 'ClaseController@edit')->name('clases.edit');
+Route::patch('/clase/{id}', 'ClaseController@update')->name('clases.update');
+Route::post('/clase', 'ClaseController@store')->name('clases.store');
+Route::get('/clase/{id}', 'ClaseController@show')->name('clases.show');
+Route::delete('/clase/{id}', 'ClaseController@destroy')->name('clases.destroy');
+
+
+///ESPACIOS
+Route::get('/espacio', 'EspacioController@index')->name('espacios.index');
+Route::get('/espacio/crear', 'EspacioController@create')->name('espacios.create');
+Route::get('/espacio/{id}/editar', 'EspacioController@edit')->name('espacios.edit');
+Route::patch('/espacio/{id}', 'EspacioController@update')->name('espacios.update');
+Route::post('/espacio', 'EspacioController@store')->name('espacios.store');
+Route::get('/espacio/{id}', 'EspacioController@show')->name('espacios.show');
+Route::delete('/espacio/{id}', 'EspacioController@destroy')->name('espacios.destroy');
 
 

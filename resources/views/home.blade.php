@@ -39,7 +39,7 @@
                          <div class="card" style="width: 18rem;">
                           <img src="/images/espacios.svg" class="card-img-top" alt="...">
                           <div class="card-body ">
-                            <a href="#" class="btn btn-primary">GESTIONAR ESPACIOS</a>
+                            <a href="{{ route('espacios.index') }}" class="btn btn-primary">GESTIONAR ESPACIOS</a>
                           </div>
                         </div>
                     </div>
