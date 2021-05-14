@@ -17,13 +17,11 @@
                             <option value="3">Cliente Oro</option>
                             <option value="4">Cliente Plata</option>
                         </select>
-                            {!! $errors->first('role_id', '<small> :message </small><br>') !!}
+                        {!! $errors->first('role_id', '<small> :message </small><br>') !!}
                     </div>
-
                     <div class="form-group">
                         <label for="name">Nombre y apellidos</label>
                         <input class="form-control bg-light shadow-sm border-0" type="text" name="name">
-                        {!! $errors->first('name', '<small> :message </small>') !!}
                     </div>
 
                     <div class="form-group">
