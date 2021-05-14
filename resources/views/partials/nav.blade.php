@@ -9,6 +9,7 @@
 				<span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar left -->
 			<ul class="nav">
 				<li class="nav-item {{ setActive('home') }}">
 					<a class="nav-link" href="{{ route('home') }}">HOME</a>
@@ -22,45 +23,47 @@
 				{{-- <li class="nav-item {{ setActive('contact') }}">
 					<a class="nav-link" href="{{ route('contact') }}">CONTACTO</a>
 				</li> --}}
+			</ul>
 
-				@guest
-					<li class="nav-item {{ setActive('login') }}">
-						<a class="nav-link" href="{{ route('login') }}">LOGIN</a>
-					</li>
-				@else
-					@if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
+            <!-- Navbar right -->
+            <ul class="nav ml-auto">
+                @guest
+                    <li class="nav-item {{ setActive('login') }}">
+                        <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                    </li>
+                @else
+                    @if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
                                 <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
                             </div>
                         </li>
-					@else
-						<li class="nav-item dropdown">
-	                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-	                            {{ Auth::user()->name }}
-	                        </a>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
 
-	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-	                        	<a href="#" class="dropdown-item">Clases</a>
-	                        	<a href="#" class="dropdown-item">Espacios</a>
-	                        	<a href="#" class="dropdown-item">Reservas</a>
-	                        	<a href="#" class="dropdown-item">Perfil</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a href="#" class="dropdown-item">Clases</a>
+                                <a href="#" class="dropdown-item">Espacios</a>
+                                <a href="#" class="dropdown-item">Reservas</a>
+                                <a href="#" class="dropdown-item">Perfil</a>
 
-								<a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
 
-	                        </div>
-	                    </li>
-						{{-- <li>
-							<a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
-						</li> --}}
-					@endif
-				@endguest
-			</ul>
+                            </div>
+                        </li>
+                        {{-- <li>
+                            <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                        </li> --}}
+                    @endif
+                @endguest
+            </ul>
 		</div>
 	</div>
 </nav>

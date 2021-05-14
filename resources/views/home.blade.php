@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <h3> Bienvenido invitado </h3>
+                    <h3>Bienvenido invitado</h3>
                     <h1 class="display-4">Contenido de clientes</h1>
                     <p class="lead text-secondary">Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Neque quod rerum dolor, adipisci, ullam commodi tenetur labore minima, nihil qui distinctio fugit iure doloremque aspernatur laborum! Quibusdam itaque, neque incidunt?</p>
                 </div>
@@ -21,8 +21,8 @@
         </div>
     @else
         @if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
-            <h4 class="display-4"> Bienvenido {{ auth()->user()->name }} {{ auth()->user()->role->key }}</h4>
             <div class="container">
+                <h4 class="display-4 mb-4">Bienvenido {{ auth()->user()->name }} {{ auth()->user()->role->key }}</h4>
                 <div class="row">
                     <div class="col-12 col-sm-6 col-lg-6 d-flex align-items-stretch mb-3 mt-3">
                          <div class="card" style="width: 18rem;">
@@ -62,9 +62,9 @@
                 </div>
             </div>
         @else
-            <h4 class="display-4"> Bienvenido {{ auth()->user()->name}}</h4>
             <div class="container">
-                <div class="row ">
+                <h4 class="display-4 mb-4">Bienvenido {{ auth()->user()->name}}</h4>
+                <div class="row">
                     <div class="col-12 col-sm-6 col-lg-6 d-flex align-items-stretch">
                          <div class="card" style="width: 18rem;">
                           <img src="/images/reserva.svg" class="card-img-top" alt="...">
