@@ -22,6 +22,7 @@
     @else
         @if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
             <h4 class="display-4"> Bienvenido {{ auth()->user()->name }} {{ auth()->user()->role->key }}</h4>
+
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-lg-6 d-flex align-items-stretch mb-3 mt-3">

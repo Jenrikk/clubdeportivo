@@ -36,9 +36,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+    // @if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**

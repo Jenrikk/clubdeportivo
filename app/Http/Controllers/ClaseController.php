@@ -114,8 +114,9 @@ class ClaseController extends Controller
      * @param  \App\Clase  $clase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clase $clase)
+    public function destroy(Clase $id)
     {
-        //
+        $id->delete();
+        return redirect()->route('clases.index');
     }
 }
