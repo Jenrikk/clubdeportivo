@@ -55,12 +55,11 @@
 						@csrf
 						<input type="hidden" name="usuario" value="{{ auth()->user()->id }}">
 						<input type="hidden" name="clase" value="{{ $clase->id }}">
-						<div class="elem-group inlined">
-						    <label for="checkin-date">Check-in Date</label>
-						    <input type="date" id="checkin-date" name="checkin" required>
-					  	</div>
-					  	<input class="form-control datepicker" placeholder="Select Date" name="date" type="text">
-
+					  	<input class="form-control datepicker" placeholder="Selecciona día" name="dia" type="text">
+					  	<label for="empieza">Empieza</label>
+					  	<input type="time" name="empieza" id="">
+					  	<label for="acaba">Acaba</label>
+					  	<input type="time" name="acaba" id="">
 						<input class="btn btn-danger btn-lg" type="submit" value="RESERVAR">
 					</form>
 				    <a class="btn btn-warning btn-lg" href="{{ url()->previous() }}">Atrás</a>
@@ -78,6 +77,8 @@
         $( function() {
             $( ".datepicker" ).datepicker({
             	minDate:new Date(),
+            	dateFormat: 'dd-mm-y',
+            	firstDay: 1,
                 changeMonth: true,
                 changeYear: true
             });
