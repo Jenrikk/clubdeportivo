@@ -13,15 +13,6 @@
 				<li class="nav-item {{ setActive('home') }}">
 					<a class="nav-link" href="{{ route('home') }}">HOME</a>
 				</li>
-				{{-- <li class="nav-item {{ setActive('about') }}">
-					<a class="nav-link" href="{{ route('about') }}">ABOUT</a>
-				</li> --}}
-				<li class="nav-item {{ setActive('projects.index') }}">
-					<a class="nav-link" href="{{ route('projects.index') }}">PROYECTOS</a>
-				</li>
-				{{-- <li class="nav-item {{ setActive('contact') }}">
-					<a class="nav-link" href="{{ route('contact') }}">CONTACTO</a>
-				</li> --}}
 
 				@guest
 					<li class="nav-item {{ setActive('login') }}">

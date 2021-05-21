@@ -3,7 +3,10 @@
 @section('title', 'Clase')
 
 @section('content')
-	<div class="container">
+
+ @if (auth()->user()->role->key === 'admin' or auth()->user()->role->key === 'staff')
+
+ 	<div class="container">
 		<h1 class="display-4">{{ $clase->nombre }}</h1>
 		@if (session('status'))
 			{{ session('status')}}
@@ -24,10 +27,68 @@
 						@csrf @method('DELETE')
 						<input class="btn btn-danger btn-lg" type="submit" value="Eliminar">
 					</form>
+
 				  </div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+@else
+
+	<div class="container">
+		<h1 class="display-4">{{ $clase->nombre }}</h1>
+		@if (session('status'))
+			{{ session('status')}}
+		@endif
+
+		<div class="row">
+			<div class="col-12 col-sm-12 col-lg-12">
+				<div class="card" style="width: auto; ">
+				  <img class="card-img-top" src="{{ $clase->imagen }}">
+				  <div class="card-body">
+				    <h5 class="card-title">Descripción</h5>
+				    <p class="card-text">{{ $clase->descripcion }}</p>
+				    <p class="card-text"> Aforo: {{ $clase->aforo }}</p>
+				    <p class="card-text"> Espacio asignado: {{ $clase->espacio->nombre }}</p>
+				    <form action="{{ route('reservaclase') }}" method="POST">
+						@csrf
+						<input type="hidden" name="usuario" value="{{ auth()->user()->id }}">
+						<input type="hidden" name="clase" value="{{ $clase->id }}">
+						<div class="elem-group inlined">
+						    <label for="checkin-date">Check-in Date</label>
+						    <input type="date" id="checkin-date" name="checkin" required>
+					  	</div>
+					  	<input class="form-control datepicker" placeholder="Select Date" name="date" type="text">
+
+						<input class="btn btn-danger btn-lg" type="submit" value="RESERVAR">
+					</form>
+				    <a class="btn btn-warning btn-lg" href="{{ url()->previous() }}">Atrás</a>
+
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	@section('scripts')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( ".datepicker" ).datepicker({
+            	minDate:new Date(),
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+
+    </script>
+	@endsection {{-- end de scripts --}}
+
+
+
+@endif
 
 @endsection

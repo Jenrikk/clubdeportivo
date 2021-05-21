@@ -36,9 +36,9 @@
 
 			<div class="form-group">
 				<label for="espacio_id">Espacio asignado</label> <br>
-				<select class="form-control bg-light shadow-sm border-0" name="espacio_id" id="" value="{{ $clase->espacio->id }}">
+				<select class="form-control bg-light shadow-sm border-0" name="espacio_id" id="">
 					@foreach ($espacios as $espacio)
-						<option value="{{ $espacio->id }}">{{ $espacio->nombre }}</option>
+						<option value="{{ $espacio->id }}" {{ (old('espacio_id', $clase->espacio->id) == $espacio->id) ? 'selected' : $espacio->id }}>{{ $espacio->nombre }}</option>
 					@endforeach
 				</select>
 					{!! $errors->first('espacio_id', '<small> :message </small><br>') !!}

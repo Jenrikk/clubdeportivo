@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/app.css">
-	<script src="/js/app.js" defer></script>
+	{{-- <script src="/js/app.js" defer></script> --}}
+	<script src="{{ asset('js/app.js') }}"></script>
 	<style>
 		/*lo llevamos a resources/sass/app.scss*/
 		/*.active a {
@@ -31,5 +32,7 @@
 		</footer>
 
 	</div>
+
+    @yield('scripts')
 </body>
 </html>

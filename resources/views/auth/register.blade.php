@@ -4,7 +4,7 @@
 	<div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="mb-3">{{ __('auth.register') }}</h1>
+                <h1 class="mb-3">Registro nuevo usuario</h1>
 
                 <form class="bg-white py-3 px-4 shadow rounded" action="{{ route('register') }}" method="post">
                     @csrf

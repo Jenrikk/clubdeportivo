@@ -17,31 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-
-// Route::get('/', function () {
-// 	$nombre = 'Jorge';
-// 	return view('home')->with('nombr', $nombre);
-// })->name('home');
-
-
-
 Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
 
-
-// Route::get('/portfolio', 'ProjectController'); Esta manera era en Laravel 7.xx
-Route::get('/portfolio', 'ProjectController@index')->name('projects.index');
-Route::get('/portfolio/crear', 'ProjectController@create')->name('projects.create');
-// Route::get('/portfolio/crear', 'ProjectController@create')->name('projects.create')->middleware('auth');
-
-Route::get('/portfolio/{id}/editar', 'ProjectController@edit')->name('projects.edit');
-Route::patch('/portfolio/{id}', 'ProjectController@update')->name('projects.update');
-
-Route::post('/portfolio', 'ProjectController@store')->name('projects.store');
-Route::get('/portfolio/{id}', 'ProjectController@show')->name('projects.show');
-
-Route::delete('/portfolio/{id}', 'ProjectController@destroy')->name('projects.destroy');
 
 
 // Route::resource('proyectos', ProjectController::class); esta ruta resource es para que se generen todas las rutas, de index, create, delete, etc.
@@ -75,5 +53,27 @@ Route::patch('/espacio/{id}', 'EspacioController@update')->name('espacios.update
 Route::post('/espacio', 'EspacioController@store')->name('espacios.store');
 Route::get('/espacio/{id}', 'EspacioController@show')->name('espacios.show');
 Route::delete('/espacio/{id}', 'EspacioController@destroy')->name('espacios.destroy');
+
+///USUARIOS - Admin, STAFF
+Route::get('/usuario', 'UserController@index')->name('usuarios.index');
+Route::get('/usuarioT', 'UserController@indexTrabajadores')->name('usuarios.indexT');
+Route::get('/usuarioC', 'UserController@indexClientes')->name('usuarios.indexC');
+Route::get('/usuario/{id}/editar', 'UserController@edit')->name('usuarios.edit');
+Route::patch('/usuario/{id}', 'UserController@update')->name('usuarios.update');
+Route::post('/usuarioclase', 'UserController@reservarClase')->name('reservaclase');
+//
+Route::get('/usuario/{id}', 'UserController@show')->name('usuarios.show');
+Route::delete('/usuario/{id}', 'UserController@destroy')->name('usuarios.destroy');
+
+//CLIENTES
+Route::get('/usuario', 'UserController@index')->name('usuarios.index');
+
+
+
+
+Route::get('/test/datepicker', function () {
+    return view('datepicker');
+});
+
 
 

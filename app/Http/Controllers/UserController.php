@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
+use App\ReservaClase;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -15,6 +19,16 @@ class UserController extends Controller
     {
         $usuarios = User::get();
         return view('users.index', compact('usuarios'));
+    }
+    public function indexClientes()
+    {
+        $clientes = User::get();
+        return view('users.indexC', compact('clientes'));
+    }
+    public function indexTrabajadores()
+    {
+        $trabajadores = User::get();
+        return view('users.indexT', compact('trabajadores'));
     }
 
     /**
@@ -37,6 +51,17 @@ class UserController extends Controller
     {
         //
     }
+    public function reservarClase(Request $request)
+    {
+        $usuario = request('usuario');
+        $clase = request('clase');
+        ReservaClase::create([
+            'user_id' => $usuario,
+            'clase_id' => $clase,
+        ]);
+
+        return back()->with('status', 'Tu reserva fue creada con éxito');
+    }
 
     /**
      * Display the specified resource.
@@ -44,9 +69,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $id)
     {
-        //
+        $usuario = $id;
+        return view('users.show', compact('usuario'));
     }
 
     /**
@@ -55,9 +81,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $id)
     {
-        //
+        $roles = Role::get();
+        $usuario = $id;
+        return view('users.edit', compact('usuario', 'roles'));
     }
 
     /**
@@ -67,9 +95,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id)
     {
-        //
+        $id->update( $request->only('role_id', 'name', 'email', 'dni', 'telefono', 'fnac'));
+
+        return redirect()->route('usuarios.show', $id);
     }
 
     /**
@@ -78,8 +108,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $id)
     {
-        //
+        $id->delete();
+        return redirect()->route('usuarios.index');
     }
 }
