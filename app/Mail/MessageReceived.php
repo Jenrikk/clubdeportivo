@@ -10,6 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
+    public $subject = 'Confirmación de reserva';
     public $msj;
 
     /**

@@ -54,7 +54,9 @@
 				    <form action="{{ route('reservaclase') }}" method="POST">
 						@csrf
 						<input type="hidden" name="usuario" value="{{ auth()->user()->id }}">
-						<input type="hidden" name="clase" value="{{ $clase->id }}">
+						<input type="hidden" name="nomusuario" value="{{ auth()->user()->name }}">
+						<input type="hidden" name="emailusuario" value="{{ auth()->user()->email }}">
+						<input type="hidden" name="clase" value="{{ $clase->id }}"><input type="hidden" name="nomclase" value="{{ $clase->nombre }}">
 					  	<input class="form-control datepicker" placeholder="Selecciona día" name="dia" type="text">
 					  	<label for="empieza">Empieza</label>
 					  	<input type="time" name="empieza" id="">

@@ -12,10 +12,9 @@
                     <div class="form-group">
                         <label for="role_id">Rol</label> <br>
                         <select class="form-control bg-light shadow-sm border-0" name="role_id" id="">
-                            <option value="1">Admin</option>
-                            <option value="2">Staff</option>
-                            <option value="3">Cliente Oro</option>
-                            <option value="4">Cliente Plata</option>
+                            @foreach ($roles as $rol)
+                                <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                            @endforeach
                         </select>
                             {!! $errors->first('role_id', '<small> :message </small><br>') !!}
                     </div>

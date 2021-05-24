@@ -10,6 +10,7 @@
   <div class="container">
   	@if (auth()->user()->role->key === 'admin')
       <a href="{{ route('register') }}" class="btn btn-primary mb-4">Crear nuevo usuario</a>
+      <a href="{{ route('roles.create') }}" class="btn btn-primary mb-4">Crear nuevo ROL</a>
   	@else
   		{{-- nada porque no eres admin --}}
   	@endif

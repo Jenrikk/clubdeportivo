@@ -18,7 +18,7 @@ class MessageController extends Controller
    			'content' => 'required|min:3'
    		]);
    		//enviar email
-   		Mail::to('henrix427@gmail.com')->queue(new MessageReceived($mensaje));
+   		Mail::to('henrix427@gmail.com')->send(new MessageReceived($mensaje));
 
    		return back()->with('status', 'Recibimos tu mensaje, te responderemos cuanto antes');
    }

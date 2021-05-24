@@ -6,9 +6,8 @@
 	<title>Mensaje Recibido</title>
 </head>
 <body>
-	<p>Recibiste un mensaje de: {{ $msj['nombre']}} - {{ $msj['email']}}</p>
-	<p>Asunto: {{ $msj['subject']}}</p>
-	<p>Contenido: {{ $msj['content']}}</p>
+	<p>Hola: {{ $msj['nomusuario']}}, acabas de realizar una reserva para: {{ $msj['nomclase']}}</p>
+
 
 </body>
 </html>

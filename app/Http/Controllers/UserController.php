@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Mail\MessageReceived;
 use App\ReservaClase;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -59,6 +61,14 @@ class UserController extends Controller
             'user_id' => $usuario,
             'clase_id' => $clase,
         ]);
+
+        $emailusuario = request('emailusuario');
+        $mensaje = request()->validate([
+            'nomusuario' => 'required',
+            'nomclase' => 'required'
+        ]);
+        //enviar email
+        Mail::to($emailusuario)->send(new MessageReceived($mensaje));
 
         return back()->with('status', 'Tu reserva fue creada con éxito');
     }
