@@ -37,8 +37,8 @@
 	                        </a>
 
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-	                        	<a href="#" class="dropdown-item">Clases</a>
-	                        	<a href="#" class="dropdown-item">Espacios</a>
+	                        	<a href="{{ route('clases.index') }}" class="dropdown-item">Clases</a>
+	                        	<a href="{{ route('espacios.index') }}" class="dropdown-item">Espacios</a>
 	                        	<a href="#" class="dropdown-item">Reservas</a>
 	                        	<a href="#" class="dropdown-item">Perfil</a>
 
